@@ -1,5 +1,7 @@
 package javabasic;
 
+import java.util.Iterator;
+
 public class LoofExer {
 
 	public static void main(String[] args) {
@@ -47,10 +49,113 @@ public class LoofExer {
 		System.out.println(" ");
 		}
 		
-
-
+		// 별찍기 4
+		//*****
+		//*	  *	
+		//*	  *	
+		//*	  *	
+		//*****
+		
+		System.out.println()
+		;
+		
+		for (int i = 0; i <5; i++) {
+			for (int j = 0; j < 5; j++) {
+				if (i % 4 == 0 || j % 4 == 0) {
+					System.out.print("*");
+				}else {
+					System.out.print(" ");
+				}	
+			}
+			System.out.println();
+		}
+		
+		// 별찍기 5
+		//***** 
+		//** **	
+		//*	* *	
+		//** **	
+		//*****
+		
+		System.out.println();
+		
+		for (int i = 0; i <5; i++) {
+			for (int j = 0; j < 5; j++) {
+				if (i % 4 == 0 || j % 4 == 0 || i==j || i*j == 3) {
+					System.out.print("*");
+				}else {
+					System.out.print(" ");
+				}	
+			}
+			System.out.println();
+		}
+		
+		// 별찍기 6
+		//***** 
+		//   *	
+		// 	* 	
+		// * 	
+		//*****
+		System.out.println();
+		
+		int keyNum = 4;
+		
+		for (int i = 0; i < keyNum+1; i++) {
+			for (int j = 0; j < keyNum+1; j++) {
+				if (i == 0 || i == keyNum || i+j == keyNum) {
+					System.out.print("*");
+				}else {
+					System.out.print(" ");
+				}
+			}
+			System.out.println();
+		}
 		
 		
 		
+		// 별찍기 7
+		//*   * 
+		//*   *
+		//*****	
+		//*   *	
+		//*   *
+		
+		System.out.println();
+		
+		
+		for (int i = 0; i < keyNum+1; i++) {
+			for (int j = 0; j < keyNum+1; j++) {
+				if (j % keyNum == 0 || i == (keyNum/2)) {
+					System.out.print("*");
+				}else {
+					System.out.print(" ");
+				}	
+			}
+			System.out.println();
+		}
+		
+		// 별찍기 7
+		//  * 
+		// ***   
+		//*****	
+		// ***	
+		//  *
+		System.out.println();
+		
+		for (int i = 0; i < keyNum+1; i++) {
+			for (int j = 0; j < keyNum+1; j++) {
+				if (i-j == 2 || j-i == 2 || i+j ==0 || i==j) {
+					System.out.print("*");
+				}else {
+					System.out.print(" ");
+				}	
+			}
+			System.out.println();
+		}
+		
+		
+//		12
+//	21      23
+//		32
 	}
 }
