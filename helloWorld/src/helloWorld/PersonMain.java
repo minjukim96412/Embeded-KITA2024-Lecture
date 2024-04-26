@@ -7,6 +7,6 @@ public class PersonMain {
 		
 		System.out.println(person);
 		
-		//dd
+		//연동하기 어렵다
 	}
 }
