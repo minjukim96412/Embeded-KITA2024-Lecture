@@ -7,6 +7,6 @@ public class PersonMain {
 		
 		System.out.println(person);
 		
-		//연동하기 어렵다
+		//연동하기 어렵다..
 	}
 }
