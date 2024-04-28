@@ -141,7 +141,7 @@ public class LoofExer {
 		// ***	
 		//  *
 		System.out.println();
-
+		
 		
 		for (int i = 0; i < keyNum+1; i++) {
 			for (int j = 0; j < keyNum+1; j++) {
@@ -160,7 +160,6 @@ public class LoofExer {
 				}
 				System.out.println();	
 				}
-		
 	}
 }
 
