@@ -134,7 +134,7 @@ public class LoofExer {
 			System.out.println();
 		}
 		
-		// 별찍기 7
+		// 별찍기 8
 		//  * 
 		// ***   
 		//*****	
@@ -159,7 +159,9 @@ public class LoofExer {
 						}	
 				}
 				System.out.println();	
-				}
+			}
+		
+		
 	}
 }
 
