@@ -46,5 +46,14 @@ public class ArrayExer {
 		System.out.println(strArray[0][1].length);
 		System.out.println(strArray[1][0][1]);
 		
+		//배열의 크기 지정
+		int[] iArray = new int[5]; //5개의 정수를 저장하는 배열
+		iArray[0] = 1;
+		iArray[1] = 2;
+		iArray[2] = 3;
+		iArray[3] = 4;
+		iArray[4] = 5;
+		
+		
 	}//main
 }//class
