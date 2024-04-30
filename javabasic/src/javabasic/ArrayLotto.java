@@ -12,7 +12,7 @@
  * 	-프로그램에서 추출한 5개와 사용자가 입력한 순서대로 5개가 일치하면 3등
  * 	-프로그램에서 추출한 4개와 사용자가 입력한 순서대로 5개가 일치하면 4등
  * 	-프로그램에서 추출한 3개와 사용자가 입력한 순서대로 5개가 일치하면 5등
- * 	-나머지는 "꽝` 다음기회에"
+ * 	-나머지는 "꽝! 다음기회에"
  * 
  * 4. 예시
  * 
@@ -38,6 +38,7 @@
 package javabasic;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class ArrayLotto {
@@ -46,38 +47,89 @@ public class ArrayLotto {
 //		Math.random() : 0.0<=랜덤실수<1.0
 //		int numRandom =(int)(Math.random()*45)+1;//1~45 랜덤
 
-		int[] arr1 = new int[7];
+		Scanner sc = new Scanner(System.in);
+		int[] arr1 = new int[6];
+		int bonus = (int)(Math.random()*45)+1;
 		int arr1Leng = arr1.length;
 	
 			for (int i = 0; i < arr1Leng; i++) {
 				arr1[i]=(int)(Math.random()*45)+1;
 					for (int k = 0; k <  arr1Leng; k++) {
-						if(i==k) {continue;}
 						if (i!=k && arr1[i] == arr1[k]) {
 							while(arr1[i] == arr1[k]) {
 							arr1[i]=(int)(Math.random()*45)+1;
 							}
 						}
-					}					
-				System.out.printf("%3d", arr1[i]);
+					}	
+				if (arr1[i] == bonus){
+					while(arr1[i] == bonus) {
+						bonus=(int)(Math.random()*45)+1;
+						}
+				}				
+//				System.out.printf("%3d", arr1[i]);
 				}
-			System.out.println();
+			
+//			System.out.println(" 보너스볼 :" + bonus);
 				
 			Arrays.sort(arr1);
 			
 			for (int i = 0; i < arr1Leng; i++) {
-				System.out.printf("%3d", arr1[i]);
+//				System.out.printf("%3d", arr1[i]);
 			}
 			
-			Scanner sc = new Scanner(System.in);
-			
-			System.out.println("숫자 7개를 순서대로 입력하세요");
-			for (int i = 0; i < arr1Leng; i++) {
-				System.out.println((i+1)+". ");
-				int choice = sc.nextInt();
-			}
-			
+//			System.out.println(" 보너스볼 :" + bonus);
+					
+			System.out.println("숫자 6개를 입력하세요");
 				
-		
+			int[] choiceArray = new int[6];
+			int choiceLeng = choiceArray.length;
+			for (int i = 0; i < arr1Leng; i++) {
+				int choice = sc.nextInt();
+				choiceArray[i] = choice;
+			}
+			
+			Arrays.sort(choiceArray);
+			
+			for (int j = 0; j < choiceLeng; j++) {
+				
+				System.out.printf("%3d", choiceArray[j]);
+			}
+			System.out.println();
+			
+			int correct = 0;
+			for (int i = 0; i < choiceLeng; i++) {
+				for (int j = 0; j < choiceArray.length; j++) {	
+					if(arr1[i] == choiceArray[j]) {
+						correct++;
+					}				
+				}
+				System.out.println(correct);
+			}
+			
+			if(correct == 0 || correct == 1 || correct == 2) {
+				System.out.println("꽝! 다음기회에");
+			}else if(correct == 3) {
+				System.out.println("축하합니다! 5등에 당첨되셨습니다!");
+			}else if(correct == 4) {
+				System.out.println("축하합니다! 4등에 당첨되셨습니다!");
+			}else if(correct == 6) {
+				System.out.println("축하합니다! 1등에 당첨되셨습니다!");
+			}
+			int bonusNum = 0;
+			for (int i = 0; i < choiceLeng; i++) {
+					if(choiceArray[i] == bonus) {
+						bonusNum = i;
+					}		
+			}
+			
+			if(correct == 5 ) {
+				if(choiceArray[bonusNum] == bonus) {
+				System.out.println("축하합니다! 2등에 당첨되셨습니다!");
+				}else {
+					System.out.println("축하합니다! 등에 당첨되셨습니다!");
+				}
+			}
+
+			
 	}//main
 }//class
