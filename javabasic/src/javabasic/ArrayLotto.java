@@ -37,7 +37,8 @@
 
 package javabasic;
 
-import java.util.Iterator;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class ArrayLotto {
 	public static void main(String[] args) {
@@ -57,20 +58,26 @@ public class ArrayLotto {
 							arr1[i]=(int)(Math.random()*45)+1;
 							}
 						}
-					}
+					}					
 				System.out.printf("%3d", arr1[i]);
 				}
+			System.out.println();
+				
+			Arrays.sort(arr1);
 			
 			for (int i = 0; i < arr1Leng; i++) {
-				for (int j = 1; j < arr1Leng; j++) {
-					if(arr1[i]>arr1[j]) {
-						arr1[j] = arr1[i];
-						arr1[i] = arr1[j];
-					}
-				}
 				System.out.printf("%3d", arr1[i]);
 			}
-	
+			
+			Scanner sc = new Scanner(System.in);
+			
+			System.out.println("숫자 7개를 순서대로 입력하세요");
+			for (int i = 0; i < arr1Leng; i++) {
+				System.out.println((i+1)+". ");
+				int choice = sc.nextInt();
+			}
+			
+				
 		
 	}//main
 }//class
