@@ -48,19 +48,28 @@ public class ArrayLotto {
 		int[] arr1 = new int[7];
 		int arr1Leng = arr1.length;
 	
-			for (int i = 0; i < arr1Leng; i++) {			
+			for (int i = 0; i < arr1Leng; i++) {
 				arr1[i]=(int)(Math.random()*45)+1;
-					for (int k = 1; k <  arr1Leng; k++) {
+					for (int k = 0; k <  arr1Leng; k++) {
 						if(i==k) {continue;}
-						else {arr1[k]=(int)(Math.random()*45)+1;}
 						if (i!=k && arr1[i] == arr1[k]) {
 							while(arr1[i] == arr1[k]) {
-							arr1[k]=(int)(Math.random()*45)+1;
+							arr1[i]=(int)(Math.random()*45)+1;
 							}
 						}
 					}
-				System.out.println(arr1[i]);
+				System.out.printf("%3d", arr1[i]);
 				}
+			
+			for (int i = 0; i < arr1Leng; i++) {
+				for (int j = 1; j < arr1Leng; j++) {
+					if(arr1[i]>arr1[j]) {
+						arr1[j] = arr1[i];
+						arr1[i] = arr1[j];
+					}
+				}
+				System.out.printf("%3d", arr1[i]);
+			}
 	
 		
 	}//main

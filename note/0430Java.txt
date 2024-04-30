@@ -1,0 +1,8 @@
+###OOP(Object Oriented Programming)
+
+*객체들 상호간에 메세지를 주고 받도록 프로그래밍 하는 기법
+*메세지 전달 : 메소드 호출(method invocation)
+*클래스(class) : 객체를 생성하시 위한 틀 (Template of Object)
+*객체(object) : 데이터(member variable)+기능(member method)
+*함수(function) : 한번에 수행할 문장들의 집합
+*메소드(method):함수 중에서 객체로 접근 할 수 있는 함수
