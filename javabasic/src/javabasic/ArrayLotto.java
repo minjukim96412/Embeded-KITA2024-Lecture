@@ -31,9 +31,8 @@
  * 
  * 
  * 6.과제 제출 방법
- * 소스코드(java파일)과 실행ㄱ결과를 캡쳐이미지로 압축해서 realchoky@naver.com으로 이름써서 제출
+ * 소스코드(java파일)과 실행결과를 캡쳐이미지로 압축해서 realchoky@naver.com으로 이름써서 제출
  * */
-
 
 package javabasic;
 
@@ -43,93 +42,110 @@ import java.util.Scanner;
 
 public class ArrayLotto {
 	public static void main(String[] args) {
-		
+
 //		Math.random() : 0.0<=랜덤실수<1.0
 //		int numRandom =(int)(Math.random()*45)+1;//1~45 랜덤
 
 		Scanner sc = new Scanner(System.in);
 		int[] arr1 = new int[6];
-		int bonus = (int)(Math.random()*45)+1;
+		int bonus = (int) (Math.random() * 45) + 1;
 		int arr1Leng = arr1.length;
-	
-			for (int i = 0; i < arr1Leng; i++) {
-				arr1[i]=(int)(Math.random()*45)+1;
-					for (int k = 0; k <  arr1Leng; k++) {
-						if (i!=k && arr1[i] == arr1[k]) {
-							while(arr1[i] == arr1[k]) {
-							arr1[i]=(int)(Math.random()*45)+1;
-							}
-						}
-					}	
-				if (arr1[i] == bonus){
-					while(arr1[i] == bonus) {
-						bonus=(int)(Math.random()*45)+1;
-						}
-				}				
-//				System.out.printf("%3d", arr1[i]);
-				}
-			
-//			System.out.println(" 보너스볼 :" + bonus);
-				
-			Arrays.sort(arr1);
-			
-			for (int i = 0; i < arr1Leng; i++) {
-//				System.out.printf("%3d", arr1[i]);
-			}
-			
-//			System.out.println(" 보너스볼 :" + bonus);
-					
-			System.out.println("숫자 6개를 입력하세요");
-				
-			int[] choiceArray = new int[6];
-			int choiceLeng = choiceArray.length;
-			for (int i = 0; i < arr1Leng; i++) {
-				int choice = sc.nextInt();
-				choiceArray[i] = choice;
-			}
-			
-			Arrays.sort(choiceArray);
-			
-			for (int j = 0; j < choiceLeng; j++) {
-				
-				System.out.printf("%3d", choiceArray[j]);
-			}
-			System.out.println();
-			
-			int correct = 0;
-			for (int i = 0; i < choiceLeng; i++) {
-				for (int j = 0; j < choiceArray.length; j++) {	
-					if(arr1[i] == choiceArray[j]) {
-						correct++;
-					}				
-				}
-				System.out.println(correct);
-			}
-			
-			if(correct == 0 || correct == 1 || correct == 2) {
-				System.out.println("꽝! 다음기회에");
-			}else if(correct == 3) {
-				System.out.println("축하합니다! 5등에 당첨되셨습니다!");
-			}else if(correct == 4) {
-				System.out.println("축하합니다! 4등에 당첨되셨습니다!");
-			}else if(correct == 6) {
-				System.out.println("축하합니다! 1등에 당첨되셨습니다!");
-			}
-			int bonusNum = 0;
-			for (int i = 0; i < choiceLeng; i++) {
-					if(choiceArray[i] == bonus) {
-						bonusNum = i;
-					}		
-			}
-			
-			if(correct == 5 ) {
-				if(choiceArray[bonusNum] == bonus) {
-				System.out.println("축하합니다! 2등에 당첨되셨습니다!");
-				}else {
-					System.out.println("축하합니다! 등에 당첨되셨습니다!");
+		
+		
+		while(true) {
+		// 랜덤 숫자 6자리 겹치지않게 만들기
+		for (int i = 0; i < arr1Leng; i++) {
+			arr1[i] = (int) (Math.random() * 45) + 1;
+			for (int k = 0; k < arr1Leng; k++) {
+				if (i != k && arr1[i] == arr1[k]) {
+					while (arr1[i] == arr1[k]) {
+						arr1[i] = (int) (Math.random() * 45) + 1;
+					}
 				}
 			}
+			// 보너스 볼은 따로 겹치지않게 하나 만들기
+			if (arr1[i] == bonus) {
+				while (arr1[i] == bonus) {
+					bonus = (int) (Math.random() * 45) + 1;
+				}
+			}
+		}
 
+
+		Arrays.sort(arr1);// 배열 오름차순 정렬
+
+//			for (int i = 0; i < arr1Leng; i++) {
+//				System.out.printf("%3d", arr1[i]);
+//			}
+
+//			System.out.println(" 보너스볼 :" + bonus);
+		System.out.println("추첨 번호 : " + Arrays.toString(arr1) + " 보너스볼 :" + bonus);//로또 검증
+		
+		System.out.println();
+		System.out.println("숫자 6개를 입력하세요");
+
+		int[] choiceArray = new int[6];
+		int choiceLeng = choiceArray.length;
+
+		for (int i = 0; i < arr1Leng; i++) {
+			int choice = sc.nextInt();
+			choiceArray[i] = choice;
+		}
+		for (int i = 0; i < arr1Leng; i++) {
+			for (int j = 0; j < choiceArray.length; j++) {
+				if (i != j && choiceArray[i] == choiceArray[j]) {
+					System.out.println("같은 숫자를 입력하셨습니다.다시 입력해 주세요");
+					int choice1 = sc.nextInt();
+					choiceArray[i] = choice1;
+				}
+				if(choiceArray[i] < 1 || choiceArray[i] > 45) {
+					System.out.println("숫자를 잘못 입력하셨습니다. 1 ~ 45 숫자 중에서 "
+							+ "다시 입력해 주세요");
+					int choice1 = sc.nextInt();
+					choiceArray[i] = choice1;
+				}
+			}
+		}
+
+		Arrays.sort(choiceArray);
+		System.out.println("입력하신 숫자 : " + Arrays.toString(choiceArray));
+
+		int correct = 0;
+		for (int i = 0; i < choiceLeng; i++) {
+			for (int j = 0; j < choiceArray.length; j++) {
+				if (arr1[i] == choiceArray[j]) {
+					correct++;
+				}
+			}
+//			System.out.println(correct); //카운트 검증
+		}
+
+		System.out.println("추첨 번호 : " + Arrays.toString(arr1) + " 보너스볼 :" + bonus);
+		
+		if (correct == 0 || correct == 1 || correct == 2) {
+			System.out.println("꽝! 다음기회에");
+		} else if (correct == 3) {
+			System.out.println("축하합니다! 5등에 당첨되셨습니다!");
+		} else if (correct == 4) {
+			System.out.println("축하합니다! 4등에 당첨되셨습니다!");
+		} else if (correct == 6) {
+			System.out.println("축하합니다! 1등에 당첨되셨습니다!");
+		}
+		int bonusNum = 0;
+		for (int i = 0; i < choiceLeng; i++) {
+			if (choiceArray[i] == bonus) {
+				bonusNum = i;
+			}
+		}
+
+		if (correct == 5) {
+			if (choiceArray[bonusNum] == bonus) {
+				System.out.println("축하합니다! 2등에 당첨되셨습니다!");
+			} else {
+				System.out.println("축하합니다! 3등에 당첨되셨습니다!");
+			}
 			
-	}//main
-}//class
+		}
+		}//while
+	}// main
+}// class
