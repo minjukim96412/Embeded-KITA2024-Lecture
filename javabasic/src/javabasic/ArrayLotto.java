@@ -51,7 +51,7 @@ public class ArrayLotto {
 		int bonus = (int) (Math.random() * 45) + 1;
 		int arr1Leng = arr1.length;
 		
-		
+	
 		while(true) {
 		// 랜덤 숫자 6자리 겹치지않게 만들기
 		for (int i = 0; i < arr1Leng; i++) {
