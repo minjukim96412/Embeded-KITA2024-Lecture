@@ -6,9 +6,9 @@ public class Outer {
 	String outerNSStr = "outer non-static String";
 	
 	//non-static inner class
-	 class NSInner{
-//		static String nsinnerSStr = "nsinner static String";
-		String nsinnerNSStr = "nsinner static String";
+	class NSInner {
+		static String nsinnerSStr = "nsinner static String";		
+		String nsinnerNSStr = "nsinner non-static String";
 		String getOuterS() {
 			return outerSStr;
 		}
@@ -31,15 +31,13 @@ public class Outer {
 	}
 	
 	public int add(int a, int b) {
-		
-		//local inner class
-		//add메소드의 지역변수 위상
+		// local inner class
+		// add메소드의 지역변수 위상
 		class LInner {
-//			static String linnerSStr = "linner static String";
-			String linnerNSStr = "linner non-static String";
+			static String linnerSStr = "linner static String";		
+			String linnerNSStr = "linner non-static String";				
 		}
-		
-		return a+b;
+		return a + b;
 	}
 	
 	

@@ -9,7 +9,7 @@ public class OuterMain {
 		
 		//Outer 객체를 통해 non-static inner class 객체 생성
 		Outer.NSInner nsinner = outer.new NSInner();
-//		System.out.println(nsinner.nsinnerSStr);
+		System.out.println(nsinner.nsinnerSStr);
 		System.out.println(nsinner.nsinnerNSStr);
 		
 		//static inner class 객체 생성
