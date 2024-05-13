@@ -2,15 +2,17 @@
 
 *Stream : 데이터의 흐름 (flow of data)
 
-*InputStream : 프로그램으로 들어오는 Byte데이터의 흐름
+*baseStream 4가지
+
+	*InputStream : 프로그램으로 들어오는 Byte데이터의 흐름
 	-Byte단위 또는 Byte[]단위로 Byte 들을 읽는 스트림
 
-*OutputStream : 프로그램에서 나가는Byte 데이터의 흐름 
+	*OutputStream : 프로그램에서 나가는Byte 데이터의 흐름 
 	-Byte단위 또는 Byte[]단위로 Byte 들을 쓰는 스트림
 	
-*Reader : 프로그램으로 들어오는 문자데이터의 흐름
+	*Reader : 프로그램으로 들어오는 문자데이터의 흐름
 	-문자단위 또는 char[]단위로 문자들을 읽는 스트림
-*Writer : 프로그램으로 나가는 문자데이터의 흐름
+	*Writer : 프로그램으로 나가는 문자데이터의 흐름
 	-문자단위 또는 char[]단위로 문자들을 쓰는 스트림
 	
 *File 
@@ -39,9 +41,10 @@ BufferedReader, BufferedWriter
 		1) 직렬화 하려면 Serializable 인터페이스를 구현하도록 강제되어 있음
 		2) Serialiable 인터페이스는 내용이 없다. 
 			단지 Serialiable 인터페이스를 구현한 
-			클래스의 객체가 직렬화 간으함을 표시하는 용도
+			클래스의 객체가 직렬화 가능함을 표시하는 용도
 		3) 직렬화 대상
 			1.기본타입
 			2.String
 			3.private이 아닌 것 들
 			4.Serializable 인터페이스를 구현한 클래스의 객체
+		public static final long serialVersionUID 상수 선언 필요
