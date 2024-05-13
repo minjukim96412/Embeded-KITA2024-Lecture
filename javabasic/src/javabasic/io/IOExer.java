@@ -65,6 +65,13 @@ public class IOExer {
 			cnfe.printStackTrace();
 		}catch (ClassCastException cce) {
 			cce.printStackTrace();
+		}finally {
+			try {
+				ois.close();
+				oos.close();
+			}catch(IOException ioe){
+				ioe.printStackTrace();
+			}
 		}
 		
 		

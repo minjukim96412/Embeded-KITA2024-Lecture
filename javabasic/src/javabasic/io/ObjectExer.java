@@ -14,6 +14,7 @@ public class ObjectExer {
 		Person hong = new Person("홍길동",20,"123456-7890123");
 		Person kang = new Person("강감찬",20,"987654-3210123");
 		
+		
 		File file = null;
 		FileOutputStream fos = null;;
 		ObjectOutputStream oos = null;
