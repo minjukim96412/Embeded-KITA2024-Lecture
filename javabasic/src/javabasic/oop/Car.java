@@ -10,7 +10,7 @@ public class Car {
 	String carName;	//이름
 	String color;	//색상
 	int tireCount; //타이어 수
-	
+	 
 	//클래스의 메소드 = 객체없이 호출해서 사용할 수 있는 메소드
 	//정적 멤버 메소드(static member method)
 	static int getCarCount(){
