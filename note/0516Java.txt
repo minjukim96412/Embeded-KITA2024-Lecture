@@ -23,5 +23,9 @@
 
 *Transaction 처리
 -트랜잭션 : 한번에 모두 수행되거나 모두 수행되지 말아야 할 작업의 묶음 단위 (예> 이체트랜잭션은 출금 + 입금)
+1. conn.setAutoCommit(false) : 쿼리 수행시 커밋 방지
+2. Transaction 완료시 commit()
+3. Transection 롤백시 rollback()
+4. 롤백시점을 savepoint로 지정하고 지정된 savapoint로 롤백가능
 
 
