@@ -5,7 +5,7 @@ public class Person {
 	private String pname;
 	private int page;
 
-	public Person() {
+	public Person() {  
 	} 
 
 	public Person(String pname, int page) {
