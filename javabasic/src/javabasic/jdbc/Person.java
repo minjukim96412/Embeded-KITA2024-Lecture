@@ -6,7 +6,7 @@ public class Person {
 	private int page;
 
 	public Person() {
-	}
+	} 
 
 	public Person(String pname, int page) {
 		super();
