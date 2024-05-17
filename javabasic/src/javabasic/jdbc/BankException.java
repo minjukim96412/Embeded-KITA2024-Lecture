@@ -1,4 +1,4 @@
-package javajdbc;
+package javabasic.jdbc;
 
 public class BankException  extends Exception{
 

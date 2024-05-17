@@ -1,11 +1,10 @@
-package javajdbc;
+package javabasic.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionTest {
-
 	public static final String JDBC_URL = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
 	public static final String USER_ID = "kmj";
 	public static final String USER_PASS = "1234";

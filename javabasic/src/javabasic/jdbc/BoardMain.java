@@ -1,4 +1,4 @@
-package javajdbc;
+package javabasic.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
