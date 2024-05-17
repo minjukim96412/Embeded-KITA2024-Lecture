@@ -1,11 +1,15 @@
 package javabasic.jdbc;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,29 +33,33 @@ public class JDBCExer {
 //			System.out.println(dataStr);
 			
 			//2. 테이블에 데이터 입력
-			String[] dataArr = dataStr.split("\n");
-			int dataArrLeng = dataArr.length;
-			List<UserInfo> userInfoList = new ArrayList<UserInfo>();
-			
-			for (int i = 1; i < dataArrLeng; i++) {
-				String[] lineArr = dataArr[i].split(";");
-				UserInfo userInfo
-					= new UserInfo(lineArr[0],Integer.parseInt(lineArr[1]),lineArr[2],lineArr[3]);
-				userInfoList.add(userInfo);
-				}
-			int insertResult = exer.insertData(userInfoList);
-			if (insertResult > 0) {
-				System.out.println(insertResult + "개 행 입력 성공!");
-				}
+//			String[] dataArr = dataStr.split("\n");
+//			int dataArrLeng = dataArr.length;
+//			List<UserInfo> userInfoList = new ArrayList<UserInfo>();
+//			
+//			for (int i = 1; i < dataArrLeng; i++) {
+//				String[] lineArr = dataArr[i].split(";");
+//				UserInfo userInfo
+//					= new UserInfo(lineArr[0],Integer.parseInt(lineArr[1]),lineArr[2],lineArr[3]);
+//				userInfoList.add(userInfo);
+//				}
+//			int insertResult = exer.insertData(userInfoList);
+//			if (insertResult > 0) {
+//				System.out.println(insertResult + "개 행 입력 성공!");
+//				}
 			
 			//3.테이블에 데이터 출력
+//			exer.listData();
 			
+			//4.데이터를 파일에 저장(assets/userinfo.txt)
+			
+			exer.saveAsFile(dataStr);
 			
 			}catch(Exception ex) {
 			ex.printStackTrace();
 			}
 		
-	
+			
 		
 	}
 	
@@ -90,7 +98,26 @@ public class JDBCExer {
 	}
 	//데이터 출력
 		private void listData() throws Exception{
+			String sql = " select username,identifier,firstName,lastName from userinfo ";
+			Statement stmt = this.conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				System.out.println(rs.getString(1) + ":" + rs.getInt(2) + ":" + rs.getString(3) 
+						+ rs.getString(4));
+			}
 			
-	}
+		}
+	//데이터를 파일로 저장
+		private void saveAsFile(String dataStr) throws Exception{
+			
+			File file = new File("D:\\embeded\\eclipse_workspace\\Embeded-KITA2024-Lecture\\javabasic\\src\\assets\\userinfo.txt");
+			FileWriter fw = new FileWriter(file);
+			fw.write(dataStr);
+			fw.flush();
+			fw.close();
+			
+		}	
+			
+			
 }
 
