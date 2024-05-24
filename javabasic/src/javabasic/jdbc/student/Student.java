@@ -3,7 +3,7 @@ package javabasic.jdbc.student;
 import java.util.List;
 
 public class Student {
-	private int sno;
+	private int Sno;
 	private String sname;
 	private int sage;
 	private String sgender;
@@ -13,21 +13,21 @@ public class Student {
 		
 	}
 
-	public Student(int sno, String sname, int sage, String sgender, List<Subject> subjectList) {
+	public Student(int Sno, String sname, int sage, String sgender, List<Subject> subjectList) {
 		super();
-		this.sno = sno;
+		this.Sno = Sno;
 		this.sname = sname;
 		this.sage = sage;
 		this.sgender = sgender;
 		this.subjectList = subjectList;
 	}
 
-	public int getsno() {
-		return sno;
+	public int getSno() {
+		return Sno;
 	}
 
-	public void setsno(int sno) {
-		this.sno = sno;
+	public void setSno(int Sno) {
+		this.Sno = Sno;
 	}
 
 	public String getSname() {
@@ -69,7 +69,7 @@ public class Student {
 		for (Subject subject : subjectList) {
 			subjectListprn += subject.toString();
 		}
-		return sno + "번" + sname + " : " + sage + "살, " + sgenderPrn + ", " + subjectListprn;
+		return Sno + "번" + sname + " : " + sage + "살, " + sgenderPrn + ", " + subjectListprn;
 	}
 	
 	

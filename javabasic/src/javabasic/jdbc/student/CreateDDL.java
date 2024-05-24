@@ -8,60 +8,84 @@ import java.sql.Statement;
 import javabasic.jdbc.ConnectionUtil;
 
 public class CreateDDL {
-   
+
    Connection conn;
-   
+
    CreateDDL() {
       conn = ConnectionUtil.getConnection();
    }
-   
-   public static void main(String[] args) {
-      
-      StringBuilder sb = new StringBuilder();
-      sb.append(" CREATE TABLE STUDENT ( ");
-      sb.append("   SNO NUMBER PRIMARY KEY, ");
-      sb.append("   SNAME VARCHAR2(20), ");
-      sb.append("   SAGE NUMBER, ");
-      sb.append("   SGENDER CHAR(1), ");
-      sb.append("   SUBNO NUMBER, ");
-      sb.append("   FOREIGN KEY (SUBNO) REFERENCES SUBJECT(SUBNO) ");
-      sb.append(" ) ");
-      String createStudentSql = sb.toString();
-      
-      sb.setLength(0);
-      
-      sb.append(" CREATE TABLE SUBJECT ( ");
-      sb.append("   SUBNO NUMBER PRIMARY KEY, ");
-      sb.append("   SUBNAME VARCHAR2(20) ");
-      sb.append(" ) ");
-      String createSubjectSql = sb.toString();
-      
-      String studentSequenceSql = " CREATE SEQUENCE STUDENT_SEQ ";
-      
-      String subjectSequenceSql = " CREATE SEQUENCE SUBJECT_SEQ ";   
-      
-      //객체 생성
-      CreateDDL createDDL = new CreateDDL();
-      
+
+   public void startCreateDDL() {
+      // 객체 생성
+      String subjectSql = createSubjectSql();
+      String studentSql = createStudentSql();
+      String studentsubjectSql = createStudentSubjectSql();
+      String subjectSequenceSql = createSubjectSequenceSql();
+      String studentSequenceSql = createStudentSequenceSql();
+
       Statement stmt = null;
       try {
-    	  //Statement 생성 후 쿼리 실행
-         stmt = createDDL.conn.createStatement();
-         stmt.execute(createStudentSql);
-         stmt.execute(createSubjectSql);
-         stmt.execute(studentSequenceSql);
+         // Statement 생성 후 쿼리 실행
+         stmt = conn.createStatement();
+         stmt.execute(subjectSql);
+         stmt.execute(studentSql);
+         stmt.execute(studentsubjectSql);
          stmt.execute(subjectSequenceSql);
+         stmt.execute(studentSequenceSql);
       } catch (SQLException sqle) {
          sqle.printStackTrace();
       } finally {
          try {
             stmt.close();
-            ConnectionUtil.closeConnection(createDDL.conn);
+            ConnectionUtil.closeConnection(conn);
          } catch (SQLException sqle) {
             sqle.printStackTrace();
          }
       }
-      
-   } // main
+   }
 
-} // class
+   // Subject테이블 생성 쿼리
+   private String createSubjectSql() {
+      StringBuilder sb = new StringBuilder();
+      sb.append(" create table subject(");
+      sb.append(" subno number primary key,");
+      sb.append(" subname varchar2(20)");
+      sb.append(")");
+      return sb.toString();
+   }
+
+   // Student테이블 생성 쿼리
+   private String createStudentSql() {
+      StringBuilder sb = new StringBuilder();
+      sb.append(" create table student( ");
+      sb.append(" sno number primary key, ");
+      sb.append(" sname varchar2(20), ");
+      sb.append(" sage number, ");
+      sb.append(" sgender char(1) ");
+      sb.append(")");
+      return sb.toString();
+   }
+
+   // StudentSubject테이블 생성 쿼리
+   private String createStudentSubjectSql() {
+      StringBuilder sb = new StringBuilder();
+      sb.append(" create table studentsubject( ");
+      sb.append(" sno number, ");
+      sb.append(" subno number, ");
+      sb.append(" foreign key (sno) references student(sno), ");
+      sb.append(" foreign key (subno) references subject(subno) ");
+      sb.append(")");
+      return sb.toString();
+   }
+
+   // Subject 시퀀스 쿼리
+   private String createSubjectSequenceSql() {
+      return " create sequence subject_seq";
+   }
+
+   // Student 시퀀스 쿼리
+   private String createStudentSequenceSql() {
+      return " create sequence student_seq";
+   }
+
+}
