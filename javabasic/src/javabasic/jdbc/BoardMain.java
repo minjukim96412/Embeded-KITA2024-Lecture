@@ -22,22 +22,22 @@ public class BoardMain {
 		
 		try {
 		
-			// 1. 등록
-			
-			Board board = new Board(0, "게시물제목", "게시물내용", null);
-			int insertResult = bm.insertBoard(board);
-			if (insertResult >0) {
-				System.out.println("등록 성공!");
-			}
+//			// 1. 등록
+//			
+//			Board board = new Board(0, "게시물제목", "게시물내용", null);
+//			int insertResult = bm.insertBoard(board);
+//			if (insertResult >0) {
+//				System.out.println("등록 성공!");
+//			}
 			
 			
 			// 2. 목록
-			/*
+			
 			List<Board> boardList = bm.listBoard();
 			for (Board board : boardList) {
 				System.out.println(board);
 			}
-			*/
+			
 			
 			// 3. 수정
 			/*
