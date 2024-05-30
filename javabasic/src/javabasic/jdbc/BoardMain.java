@@ -33,29 +33,29 @@ public class BoardMain {
 			
 			// 2. 목록
 			
-			List<Board> boardList = bm.listBoard();
-			for (Board board : boardList) {
-				System.out.println(board);
-			}
+//			List<Board> boardList = bm.listBoard();
+//			for (Board board : boardList) {
+//				System.out.println(board);
+//			}
+//			
+//			
+//			// 3. 수정
+//			
+//			Board board = new Board(1, "수정된제목", "수정된내용", null);
+//			int result = bm.updateBoard(board);
+//			if (result > 0) {
+//				System.out.println("수정 완료!");
+//			}
 			
-			
-			// 3. 수정
-			/*
-			Board board = new Board(1, "수정된제목", "수정된내용", null);
-			int result = bm.updateBoard(board);
-			if (result > 0) {
-				System.out.println("수정 완료!");
-			}
-			*/
 			
 			// 4. 삭제
-			/*
+			
 			Board board = new Board(2, null, null, null);
 			int result = bm.deleteBoard(board);
 			if (result > 0) {
 				System.out.println("삭제 완료!");
 			}
-			*/
+			
 			
 			// 5. 한건 조회
 //			Board board = new Board(1, null, null, null);
