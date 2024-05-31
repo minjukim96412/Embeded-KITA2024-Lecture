@@ -5,9 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import javabasic.jdbc.Board;
+import javax.swing.JOptionPane;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+
 import javabasic.jdbc.ConnectionUtil;
 
 public class TastyRestaurantDAO {
@@ -15,7 +20,9 @@ public class TastyRestaurantDAO {
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
-	
+	String columnName;
+	Object newData;
+	int id;
 	public TastyRestaurantDAO() throws SQLException{
 		conn = ConnectionUtil.getConnection();
 	}
@@ -24,7 +31,7 @@ public class TastyRestaurantDAO {
 		String sql = " SELECT TID, Restaurant_NAME, FOOD_CATEGORY,"
 				+ " Restaurant_IP, Restaurant_MENU, MENU_PRICE, "
 				+ "Restaurant_SCORE, Restaurant_REVIEW, TREGDATE  "
-				+ " FROM TASTY_Restaurant_LIST ";
+				+ " FROM TASTY_Restaurant_LIST ORDER BY TID";
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		List<TastyRestaurant> tastyList = new ArrayList<TastyRestaurant>();
@@ -44,21 +51,12 @@ public class TastyRestaurantDAO {
 		return tastyList;
 	}//list
 	
-    int updateTasty(TastyRestaurant tastyRestaurant) throws SQLException{
-    	String sql = " UPDATE TASTY_RESTAURANT_LIST SET RESTAURANT_NAME=? "
-        		+ ", FOOD_CATEGORY=? , RESTAURANT_IP=? "
-        		+ ", RESTAURANT_MENU=?, MENU_PRICE=?, "
-        		+ "RESTAURANT_SCORE=?, RESTAURANT_REVIEW=? WHERE TID =? ";
-    	pstmt = conn.prepareStatement(sql);
-    	pstmt.setString(1, tastyRestaurant.getRestaurant_name());
-    	pstmt.setString(2, tastyRestaurant.getFood_category());
-    	pstmt.setString(3, tastyRestaurant.getRestaurant_ip());
-    	pstmt.setString(4, tastyRestaurant.getRestaurant_menu());
-    	pstmt.setInt(5, tastyRestaurant.getMenu_price());
-    	pstmt.setDouble(6, tastyRestaurant.getRestaurant_score());
-    	pstmt.setString(7, tastyRestaurant.getRestaurant_review());
-    	pstmt.setInt(8, tastyRestaurant.getTid());
-		return pstmt.executeUpdate();
+	int updateTasty()  throws SQLException {
+		String sql = "UPDATE TASTY_RESTAURANT_LIST SET " + columnName + " = ? WHERE tid = ?";
+		pstmt = conn.prepareStatement(sql);
+	    pstmt.setObject(1, newData);
+	    pstmt.setInt(2, id);
+	    return pstmt.executeUpdate();
     }
 	
  // 게시물 삭제
@@ -69,4 +67,8 @@ public class TastyRestaurantDAO {
  		return pstmt.executeUpdate();
  	}
 
+ 	
+ 	
+ 	
+ 	
 }//TastyRestaurantDAO

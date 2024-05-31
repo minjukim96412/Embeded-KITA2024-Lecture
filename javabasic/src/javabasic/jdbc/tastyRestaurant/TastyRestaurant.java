@@ -1,6 +1,9 @@
 package javabasic.jdbc.tastyRestaurant;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TastyRestaurant {
 	
@@ -13,7 +16,9 @@ public class TastyRestaurant {
 	private double restaurant_score;
 	private String restaurant_review;
 	private Timestamp tregdate;
-	
+	private static List<TastyRestaurant> tastyList;
+
+    
 	public TastyRestaurant() {
 		// TODO Auto-generated constructor stub
 	}
@@ -104,6 +109,26 @@ public class TastyRestaurant {
 		this.tregdate = tregdate;
 	}
 
+	
+	public static List<TastyRestaurant> getTastyList() {
+        if (tastyList == null) {
+            try {
+                fetchTastyList(); // DAO 호출은 여기서 이루어집니다.
+            } catch (SQLException e) {
+                e.printStackTrace();
+                tastyList = new ArrayList<>(); // 예외 발생 시 빈 리스트로 초기화
+            }
+        }
+        return tastyList;
+    }
+	
+	private static void fetchTastyList() throws SQLException {
+        TastyRestaurantDAO trd = new TastyRestaurantDAO();
+        tastyList = trd.listTasty();
+        if (tastyList.isEmpty()) {
+            throw new SQLException("저장된 맛집정보가 없습니다.");
+        }
+    }
 	
 	@Override
 	public String toString() {
