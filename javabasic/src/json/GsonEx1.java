@@ -37,6 +37,7 @@ public class GsonEx1 {
 		personList.add(new Person("강감찬", 40));
 		personList.add(new Person("이순신", 50));
 		String jsonStr4 = gson3.toJson(personList);
+		System.out.println(jsonStr4);
 		
 		
 	}//main
