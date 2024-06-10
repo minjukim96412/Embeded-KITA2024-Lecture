@@ -3,17 +3,17 @@ package javabasic;
 public class LambdaExer {
 	public static void main(String[] args) {
 		
-		printStr("hello");
-		str -> System.out.println(str);
-		
-		System.out.println(add(10,20));
-		(x,y) -> x+y
-		
-		printStr2("Hi","There");		
-		(str1, str2) -> {
-			System.out.println(str1);
-			System.out.println(str2);
-		}
+//		printStr("hello");
+//		str -> System.out.println(str);
+//		
+//		System.out.println(add(10,20));
+//		(x,y) -> x+y
+//		
+//		printStr2("Hi","There");		
+//		(str1, str2) -> {
+//			System.out.println(str1);
+//			System.out.println(str2);
+//		}
 		
 		
 		
