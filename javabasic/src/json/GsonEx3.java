@@ -17,7 +17,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class GsonExer3 {
+public class GsonEx3 {
 	
 	//실습 : 네트워크상의 JSON데이터(문자열)를 받아서 List로 변환 후 출력해 보기
 	//https://jsonplaceholder.typicode.com/posts
